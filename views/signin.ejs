@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="center">
+        <h1>Sign In</h1>
+        <form id="signin-form" method="POST" action="/auth/signin">
+            <div class="inputbox">
+                <input name="email" type="email" required="required">
+                <span>Email</span>
+            </div>
+            <div class="inputbox">
+                <input name="password" type="password" required="required">
+                <span>Password</span>
+            </div>
+            <div class="inputbox">
+                <input id="signin-submit-btn" type="submit" value="submit">
+            </div>
+            <div id="result"></div>
+        </form>
+    </div>
+</div>
+<script>
+    $("#signin-form").submit(function(event) {
+        event.preventDefault();
+        var post_url = $(this).attr("action");
+        var request_method = $(this).attr("method");
+        var form_data = $(this).serialize();
+
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function(response) {
+            if (response == "success") {
+                $("#result").html("Success! You're redirecting to homepage...");
+                setTimeout(function() {
+                    window.location.href = "/"
+                }, 3000);
+            } else {
+                $("#result").html(response);
+            }
+        });
+    });
+</script>

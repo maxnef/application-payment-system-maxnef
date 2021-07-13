@@ -1,0 +1,110 @@
+<script>
+    $(document).ready(function() {
+        $(".inc").on("click", function() {
+
+            let product_id = $(this).attr("value");
+
+            $.ajax({
+                    url: "/cart/increase",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "product_id": product_id,
+                    },
+                })
+                .done(function(resp) {
+                    location.reload();
+                })
+                .fail(function(resp) {
+                    alert("Neden");
+                });
+        });
+        $(".dec").on("click", function() {
+
+            let product_id = $(this).attr("value");
+
+            $.ajax({
+                    url: "/cart/decrease",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "product_id": product_id,
+                    },
+                })
+                .done(function(resp) {
+                    location.reload();
+                })
+                .fail(function(resp) {
+                    alert(resp.responseText);
+                });
+        });
+        $(".del").on("click", function() {
+
+            let product_id = $(this).attr("value");
+
+            $.ajax({
+                    url: "/cart/delete",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "product_id": product_id,
+                    },
+                })
+                .done(function(resp) {
+                    location.reload();
+                })
+                .fail(function(resp) {
+                    alert(resp.responseText);
+                });
+        });
+    });
+</script>
+<div class="container">
+    <div class="cart-summary-detail">
+        <h4>Cart Summary</h4>
+        <% if(products.length == 0){ %>
+            <h4>There is no product in your cart.</h4>
+            <% } else{%>
+                <div class="cart-products">
+                    <% products.forEach(x => { %>
+                        <div class="row cart-product mx-auto">
+                            <div class="col-md-1">
+                                <img src="<%= x[0].images.small %>" alt="product-img">
+                            </div>
+                            <div class="col-md-5 my-auto">
+                                <h4>
+                                    <%= x[0].name %>
+                                </h4>
+                            </div>
+                            <div class="col-md-2 my-auto">
+                                <h5>
+                                    $
+                                    <%= x[0].price %>
+                                </h5>
+                            </div>
+                            <div class="col-md-2 my-auto">
+                                <h5>
+                                    AMOUNT:
+                                    <%= x[1] %>
+                                </h5>
+                            </div>
+                            <div class="col-md-1 my-auto">
+                                <button value="<%=x[0]._id %>" class="btn inc"><i class="fa fa-plus" style="font-size: 18px;"></i></button>
+                                <button value="<%=x[0]._id %>" <% if(x[1]==1 ){ %> disabled <% } %> class="btn dec"><i class="fa fa-minus" style="font-size: 18px;"></i></button>
+                            </div>
+                            <div class="col-md-1 my-auto">
+                                <button value="<%=x[0]._id %>" class="btn del"><i class="fa fa-trash" style="font-size: 18px;"></i></button>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+                <% } %>
+    </div>
+    <div class="cart-summary-navigate">
+        <button onClick="window.location.href = '/';">BACK TO SHOPPING</button>
+        <% let total = 0; %>
+            <% products.forEach(x => { total += (x[1] * x[0].price) }); %>
+                <span>TOTAL: $<%= total %> </span>
+                <button onclick="window.location.href = '/payment';" <% if(products.length < 1){ %> disabled <% } %>>PAY WITH PAYPAL</button>
+    </div>
+</div>

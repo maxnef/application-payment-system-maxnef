@@ -1,0 +1,37 @@
+<nav>
+    <div class="logo">
+        <a href="/">
+            <h4>M4XN3F</h4>
+        </a>
+    </div>
+    <ul class="nav-links">
+        <% if(cookies.clientCookie){ %>
+            <li>
+                <button class="btn draw-border" id="btn-account" onclick="route('btn-account')">Account</button>
+            </li>
+            <li>
+                <button class="btn draw-border" id="btn-sign-out" onclick="route('btn-sign-out')">Sign Out</button>
+            </li>
+            <% } else{ %>
+                <li>
+                    <button class="btn draw-border" id="btn-sign-up" onclick="route('btn-sign-up')">Sign Up</button>
+                </li>
+                <li>
+                    <button class="btn draw-border" id="btn-sign-in" onclick="route('btn-sign-in')">Sign In</button>
+                </li>
+                <% } %>
+    </ul>
+</nav>
+<script>
+    function route(id) {
+        if (id === 'btn-account') {
+            window.location.href = "/account"
+        } else if (id === 'btn-sign-out') {
+            window.location.href = "/auth/signout"
+        } else if (id === 'btn-sign-up') {
+            window.location.href = "/auth/signup"
+        } else if (id === 'btn-sign-in') {
+            window.location.href = '/auth/signin'
+        }
+    }
+</script>

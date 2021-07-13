@@ -1,0 +1,128 @@
+<script>
+    $(document).ready(function() {
+        $(".cart").on("click", function() {
+
+            let product_id = $(this).attr("id");
+
+            $.ajax({
+                    url: "/cart/add",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "product_id": product_id,
+                    },
+                })
+                .done(function(resp) {
+                    $("#count").html(resp);
+                })
+                .fail(function(resp) {
+                    alert(resp.responseText);
+                });
+        });
+    });
+</script>
+<div class="container">
+    <!-- Retrieved from https://bbbootstrap.com/snippets/ecommerce-single-product-add-cart-button-21268162-->
+    <div class="row">
+        <div class="col">
+            <div class="card mx-auto col-xl-6 col-10 mt-3 bg-dark text-light">
+                <div id="carouselProductIndicators1" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselProductIndicators1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselProductIndicators1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselProductIndicators1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="<%= products[0].images.large1 %>" class="d-block w-100" alt="<%= products[0].name %> img1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%= products[0].images.large2 %>" class="d-block w-100" alt="<%= products[0].name %> img2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%= products[0].images.large3 %>" class="d-block w-100" alt="<%= products[0].name %> img3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductIndicators1" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProductIndicators1" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="card-body text-center mx-auto">
+                    <div class='cvp'>
+                        <h5 class="card-title font-weight-bold">
+                            <%= products[0].name %>
+                        </h5>
+                        <p class="card-text">
+                            <%if(products[0].currency === "USD"){ %>$
+                                <% } %>
+                                    <%= products[0].price %>
+                        </p>
+                        <a href="#" id="<%= products[0]._id %>" class="btn cart px-auto bg-success text-light">ADD TO CART</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mx-auto col-xl-6 col-10 mt-3 bg-dark text-light">
+                <div id="carouselProductIndicators2" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselProductIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselProductIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselProductIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="<%= products[1].images.large1 %>" class="d-block w-100" alt="<%= products[1].name %> img1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%= products[1].images.large2 %>" class="d-block w-100" alt="<%= products[1].name %> img2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="<%= products[1].images.large3 %>" class="d-block w-100" alt="<%= products[1].name %> img3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductIndicators2" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProductIndicators2" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="card-body text-center mx-auto">
+                    <div class='cvp'>
+                        <h5 class="card-title font-weight-bold">
+                            <%= products[1].name %>
+                        </h5>
+                        <p class="card-text">
+                            <%if(products[1].currency === "USD"){ %>$
+                                <% } %>
+                                    <%= products[1].price %>
+                        </p>
+                        <a href="#" id="<%= products[1]._id %>" class="btn cart px-auto bg-success text-light">ADD TO CART</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Retrieved from: https://dev.to/webdeasy/top-20-css-buttons-animations-f41 , 15th example -->
+    <div class="wrapper">
+        <div class="link_wrapper">
+            <a href="/cart">
+                <span id="count"><%=cartCount%></span>
+                <span> PRODUCT IN CART</span></a>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+              <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
+            </svg>
+            </div>
+        </div>
+
+    </div>
+</div>
