@@ -1,2 +1,3 @@
 # application-payment-system-maxnef
-A payment system designed by maxnef
+MongoDB is used for database,
+Paypal is used for payment-processor
