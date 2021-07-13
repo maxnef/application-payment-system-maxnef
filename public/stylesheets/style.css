@@ -1,0 +1,245 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    transform: translateY(25px);
+}
+
+
+/* CART BUTTON  -- START -- Retrieved from: https://dev.to/webdeasy/top-20-css-buttons-animations-f41 , 15th example */
+
+.wrapper {
+    position: fixed;
+    top: 95%;
+    left: 95%;
+    transform: translateY(80px);
+}
+
+.link_wrapper {
+    position: relative;
+}
+
+.link_wrapper a {
+    display: block;
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    background: #333;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 3px solid #333;
+    transition: all .35s;
+    content: "product in cart";
+}
+
+#count {
+    color: #2ecc71;
+}
+
+.link_wrapper .icon {
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 0;
+    top: 0;
+    z-index: -1;
+    transition: all .35s;
+}
+
+.link_wrapper .icon svg {
+    width: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    transform: rotate(-45deg);
+    fill: #2ecc71;
+    transition: all .35s;
+}
+
+.link_wrapper a:hover {
+    width: 200px;
+    border: 3px solid #2ecc71;
+    background: transparent;
+    color: #2ecc71;
+}
+
+.link_wrapper a:hover span {
+    display: none;
+    visibility: hidden;
+}
+
+.link_wrapper a:hover::after {
+    content: "GO TO CART";
+}
+
+.link_wrapper a:hover+.icon {
+    border: 3px solid #2ecc71;
+    right: -20%;
+}
+
+
+/* CART BUTTON -- END -- */
+
+
+/* SING UP & SING IN -- START -- Retrieved from: https://codepen.io/Bilal1909/pen/KKzjgzR */
+
+.center {
+    position: relative;
+    padding: 50px 50px;
+    border-radius: 10px;
+    margin-left: 10%;
+}
+
+.center h1 {
+    font-size: 2em;
+    border-left: 5px solid dodgerblue;
+    padding: 10px;
+    color: #000;
+    letter-spacing: 5px;
+    margin-bottom: 60px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.center .inputbox {
+    position: relative;
+    width: 300px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+.center .inputbox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 2px solid #000;
+    outline: none;
+    background: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.center .inputbox:last-child {
+    margin-bottom: 0;
+}
+
+.center .inputbox span {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-size: 1em;
+    transition: 0.6s;
+    font-family: sans-serif;
+}
+
+.center .inputbox input:focus~span,
+.center .inputbox input:valid~span {
+    transform: translateX(-13px) translateY(-35px);
+    font-size: 1em;
+}
+
+.center .inputbox [type="submit"] {
+    width: 50%;
+    background: dodgerblue;
+    color: #fff;
+    border: #fff;
+}
+
+#signin-submit-btn:hover,
+#signup-submit-btn:hover {
+    background: #2ecc71;
+}
+
+#signin-message {
+    transform: translate(8px, -15px);
+    display: none;
+}
+
+
+/* SING UP & SING IN -- END -- */
+
+
+/* CART SUMMARY -- START -- */
+
+.cart-summary-detail h4 {
+    margin-left: 10px;
+}
+
+.cart-summary-detail {
+    border: 1px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.cart-product {
+    border-top: 1px solid rgba(0, 0, 0, 0.6);
+    padding: 5px;
+}
+
+.cart-summary-navigate {
+    width: 100%;
+    transform: translateY(10px);
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.cart-summary-navigate span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-summary-navigate button {
+    background-color: dodgerblue;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.cart-summary-navigate button:hover {
+    background-color: #2ecc71;
+}
+
+
+/* CART SUMMARY -- END -- */
+
+
+/* ACCOUNT ORDER HISTORY -- START -- */
+
+.order-history {
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.order-history h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+
+.order-history img {
+    height: 75px;
+    width: 75px;
+    scale: auto;
+    margin-bottom: 5px;
+}
+
+.order-history .total {
+    font-size: 18px;
+    font-weight: bold;
+    border-top: 1px solid black;
+}
+
+
+/* ACCOUNT ORDER HISTORY -- END -- */
