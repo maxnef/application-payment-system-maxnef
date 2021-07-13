@@ -4,6 +4,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
+        "start": "nodemon",
         "test": "mocha test/unit.test.js --exit --recursive --timeout 5000",
         "heroku-postbuild": "npm run build"
     },
