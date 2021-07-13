@@ -103,8 +103,8 @@ function create_payment_json(items, total) {
             "payment_method": "paypal",
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3000/payment/done",
-            "cancel_url": "http://localhost:3000/cart",
+            "return_url": `${process.env.BASE_URL}/payment/done`,
+            "cancel_url": `${process.env.BASE_URL}/cart`,
         },
         "transactions": [{
             "item_list": {
