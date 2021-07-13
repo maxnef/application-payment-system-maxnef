@@ -4,7 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "mocha test/unit.test.js --exit --recursive --timeout 5000"
+        "test": "mocha test/unit.test.js --exit --recursive --timeout 5000",
+        "heroku-postbuild": "npm run build"
     },
     "author": "maxnef",
     "license": "ISC",
